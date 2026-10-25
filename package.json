@@ -1,0 +1,27 @@
+{
+  "name": "hca-edu-web",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run build -w @hca/contracts && next build",
+    "start": "next start",
+    "typecheck": "npm run build -w @hca/contracts && tsc --noEmit"
+  },
+  "dependencies": {
+    "@hca/contracts": "*",
+    "next": "~15.5.9",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "~5.9.0"
+  }
+}

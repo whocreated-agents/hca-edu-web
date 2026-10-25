@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F294A"/>
+      <stop offset="60%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="bldgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DBEAFE"/>
+      <stop offset="100%" stop-color="#EFF6FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#skyGrad)"/>
+  <!-- Sun / Dawn Accent -->
+  <circle cx="950" cy="220" r="140" fill="#F59E0B" opacity="0.35"/>
+  <circle cx="950" cy="220" r="90" fill="#FEF3C7" opacity="0.5"/>
+  <!-- Ground -->
+  <rect y="480" width="1200" height="195" fill="#0B1B30"/>
+  <rect y="500" width="1200" height="175" fill="#14532D" opacity="0.6"/>
+  <!-- Campus Academic Building Silhouette -->
+  <g transform="translate(180, 260)">
+    <!-- Central Portico -->
+    <rect x="280" y="40" width="280" height="200" fill="url(#bldgGrad)" opacity="0.95"/>
+    <polygon points="260,40 420,-30 580,40" fill="#D97706"/>
+    <!-- Pillars -->
+    <rect x="310" y="60" width="24" height="180" fill="#FFFFFF"/>
+    <rect x="370" y="60" width="24" height="180" fill="#FFFFFF"/>
+    <rect x="446" y="60" width="24" height="180" fill="#FFFFFF"/>
+    <rect x="506" y="60" width="24" height="180" fill="#FFFFFF"/>
+    <!-- Entrance Arch -->
+    <path d="M390 240V150C390 135 450 135 450 150V240Z" fill="#0F294A"/>
+    <!-- Left Wing -->
+    <rect x="60" y="90" width="220" height="150" fill="url(#bldgGrad)" opacity="0.85"/>
+    <!-- Right Wing -->
+    <rect x="560" y="90" width="220" height="150" fill="url(#bldgGrad)" opacity="0.85"/>
+    <!-- Window Grid -->
+    <g fill="#0F294A" opacity="0.75">
+      <rect x="90" y="115" width="26" height="36" rx="3"/>
+      <rect x="135" y="115" width="26" height="36" rx="3"/>
+      <rect x="180" y="115" width="26" height="36" rx="3"/>
+      <rect x="225" y="115" width="26" height="36" rx="3"/>
+      <rect x="90" y="175" width="26" height="36" rx="3"/>
+      <rect x="135" y="175" width="26" height="36" rx="3"/>
+      <rect x="180" y="175" width="26" height="36" rx="3"/>
+      <rect x="225" y="175" width="26" height="36" rx="3"/>
+      <rect x="590" y="115" width="26" height="36" rx="3"/>
+      <rect x="635" y="115" width="26" height="36" rx="3"/>
+      <rect x="680" y="115" width="26" height="36" rx="3"/>
+      <rect x="725" y="115" width="26" height="36" rx="3"/>
+      <rect x="590" y="175" width="26" height="36" rx="3"/>
+      <rect x="635" y="175" width="26" height="36" rx="3"/>
+      <rect x="680" y="175" width="26" height="36" rx="3"/>
+      <rect x="725" y="175" width="26" height="36" rx="3"/>
+    </g>
+    <!-- Flagpole -->
+    <line x1="420" y1="-30" x2="420" y2="-75" stroke="#FFFFFF" stroke-width="4"/>
+    <polygon points="422,-75 456,-65 422,-55" fill="#D97706"/>
+  </g>
+  <text x="600" y="585" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">HAPPY CHILDREN ACADEMY · CAMPUS &amp; FACILITIES</text>
+  <text x="600" y="625" font-family="Inter, sans-serif" font-size="16" font-weight="500" fill="#93C5FD" text-anchor="middle">RBSE Affiliation · Reg. 103 JJN 2003-04 · Pilani, Rajasthan</text>
+</svg>

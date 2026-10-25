@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#0F294A"/>
+  <circle cx="256" cy="256" r="216" stroke="#D97706" stroke-width="8" stroke-dasharray="8 6"/>
+  <path d="M256 96L400 176V300C400 380 336 424 256 448C176 424 112 380 112 300V176L256 96Z" fill="#1E3A8A" stroke="#F59E0B" stroke-width="12"/>
+  <path d="M200 240L256 208L312 240V290C312 330 286 356 256 368C226 356 200 330 200 290V240Z" fill="#D97706"/>
+  <text x="256" y="305" font-family="Inter, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">HCA</text>
+  <text x="256" y="415" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FEF3C7" text-anchor="middle" letter-spacing="4">ESTD 2003</text>
+</svg>

@@ -2,13 +2,13 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist/**', '**/.next/**', '**/node_modules/**', 'apps/web/next-env.d.ts', '**/*.js', '**/*.mjs'] },
+  { ignores: ['**/dist/**', '**/.next/**', '**/node_modules/**', 'next-env.d.ts', '**/*.js', '**/*.mjs'] },
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
       parserOptions: {
-        projectService: { allowDefaultProject: ['prisma.config.ts'] },
+        projectService: { allowDefaultProject: ['next.config.ts'] },
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -18,7 +18,6 @@ export default tseslint.config(
     },
   },
   {
-    // Nest uses classes + decorators for DI; tests poke at untyped JSON bodies.
     files: ['**/test/**/*.ts', '**/*.spec.ts', '**/*.test.ts'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
@@ -31,11 +30,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['apps/api/src/**/*.ts'],
-    rules: { '@typescript-eslint/no-extraneous-class': 'off' },
-  },
-  {
-    files: ['apps/web/**/*.ts', 'apps/web/**/*.tsx'],
+    files: ['src/**/*.ts', 'src/**/*.tsx'],
     rules: {
       '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { attributes: false } }],
     },

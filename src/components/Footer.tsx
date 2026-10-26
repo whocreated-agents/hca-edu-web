@@ -31,7 +31,7 @@ export function Footer({
             <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
               <Image src="/brand/logo-mark.svg" alt="HCA Crest" width={36} height={36} />
               <span style={{ fontWeight: 'bold', fontSize: 'var(--font-size-lg)', color: 'var(--text-inverse)' }}>
-                Happy Children Academy
+                Hemant Children Academy
               </span>
             </div>
             <p style={{ fontSize: 'var(--font-size-sm)', color: '#CBD5E1', lineHeight: 'var(--line-height-relaxed)' }}>
@@ -106,7 +106,7 @@ export function Footer({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
-            <p>© {new Date().getFullYear()} Happy Children Academy, Pilani. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Hemant Children Academy, Pilani. All rights reserved.</p>
             <p>
               Compliant with Section 9 of the Digital Personal Data Protection (DPDP) Act 2023. Student privacy protected.
             </p>

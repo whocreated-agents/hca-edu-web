@@ -61,7 +61,7 @@ export default function AdminOverviewPage() {
               <span className="badge badge-warning" style={{ marginBottom: 'var(--space-1)' }}>School Control Plane</span>
               <h1 className="heading-section">Administration &amp; Operations</h1>
               <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-secondary)' }}>
-                Happy Children Academy · RBSE Reg. 103 JJN 2003-04 · Pilani
+                Hemant Children Academy · RBSE Reg. 103 JJN 2003-04 · Pilani
               </p>
             </div>
             <div style={{ display: 'flex', gap: 'var(--space-2)' }}>

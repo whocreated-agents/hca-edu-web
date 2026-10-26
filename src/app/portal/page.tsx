@@ -86,7 +86,7 @@ export default function PortalPage() {
                 Welcome, {user?.displayName}
               </h1>
               <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)' }}>
-                Active Session · Happy Children Academy
+                Active Session · Hemant Children Academy
               </p>
             </div>
 

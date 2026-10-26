@@ -16,7 +16,7 @@ async function loadData() {
   ]);
 
   const profile: PublicProfile = profileRes.status === 'fulfilled' ? profileRes.value : {
-    name: 'Happy Children Academy',
+    name: 'Hemant Children Academy',
     foundedOn: '2003-04-15',
     registrationNo: '103 JJN 2003-04',
     board: 'Rajasthan Board of Secondary Education (RBSE)',
@@ -88,7 +88,7 @@ export default async function HomePage() {
                   className="subheading"
                   style={{ color: '#E2E8F0', marginBottom: 'var(--space-6)', maxWidth: '540px' }}
                 >
-                  Happy Children Academy delivers rigorous RBSE curriculum balanced with scientific inquiry, character formation, and inclusive care from Nursery to Class X.
+                  Hemant Children Academy delivers rigorous RBSE curriculum balanced with scientific inquiry, character formation, and inclusive care from Nursery to Class X.
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
@@ -119,7 +119,7 @@ export default async function HomePage() {
               >
                 <Image
                   src="/brand/placeholder-hero.svg"
-                  alt="Happy Children Academy Campus Facility"
+                  alt="Hemant Children Academy Campus Facility"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -291,7 +291,7 @@ export default async function HomePage() {
                   Mrs. Sharmila
                 </h4>
                 <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--hca-brand-primary-600)', fontWeight: '600' }}>
-                  Headmaster, Happy Children Academy
+                  Headmaster, Hemant Children Academy
                 </p>
               </div>
 
@@ -301,7 +301,7 @@ export default async function HomePage() {
                   "At HCA, education extends beyond textbooks. We build character, discipline, and scientific inquiry rooted in our cultural heritage."
                 </h2>
                 <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--text-secondary)', lineHeight: 'var(--line-height-relaxed)', marginBottom: 'var(--space-4)' }}>
-                  Founded on 15 April 2003, Happy Children Academy has served the families of Pilani and the Shekhawati region for over two decades. Our commitment is simple: rigorous academics under the Rajasthan Board curriculum, individualized attention in manageable class sizes, and an atmosphere where every child is known, encouraged, and held to high moral standards.
+                  Founded on 15 April 2003, Hemant Children Academy has served the families of Pilani and the Shekhawati region for over two decades. Our commitment is simple: rigorous academics under the Rajasthan Board curriculum, individualized attention in manageable class sizes, and an atmosphere where every child is known, encouraged, and held to high moral standards.
                 </p>
                 <Link href="/about" className="btn btn-secondary">
                   Read About Our Leadership &amp; History →

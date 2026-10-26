@@ -37,7 +37,7 @@ export default async function AdmissionsPage() {
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-10)' }}>
             <span className="badge badge-info" style={{ marginBottom: 'var(--space-2)' }}>Academic Intake {activeIntake}</span>
             <h1 className="heading-hero" style={{ marginBottom: 'var(--space-3)' }}>
-              Admissions at Happy Children Academy
+              Admissions at Hemant Children Academy
             </h1>
             <p className="subheading" style={{ maxWidth: '640px', margin: '0 auto' }}>
               Nursery through Class X · Recognized by Department of Education, Rajasthan · Affiliated with RBSE (Reg. 103 JJN 2003-04)

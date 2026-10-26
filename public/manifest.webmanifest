@@ -1,7 +1,7 @@
 {
-  "name": "Happy Children Academy Portal",
+  "name": "Hemant Children Academy Portal",
   "short_name": "HCA Portal",
-  "description": "Happy Children Academy school portal and offline-tolerant attendance register",
+  "description": "Hemant Children Academy school portal and offline-tolerant attendance register",
   "start_url": "/portal",
   "scope": "/",
   "display": "standalone",

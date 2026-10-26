@@ -12,10 +12,10 @@ export function Header() {
   return (
     <header className="public-header" role="banner">
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
-        <Link href="/" aria-label="Happy Children Academy Home" style={{ display: 'flex', alignItems: 'center' }}>
+        <Link href="/" aria-label="Hemant Children Academy Home" style={{ display: 'flex', alignItems: 'center' }}>
           <Image
             src="/brand/logo-header.svg"
-            alt="Happy Children Academy Logo"
+            alt="Hemant Children Academy Logo"
             width={240}
             height={60}
             priority

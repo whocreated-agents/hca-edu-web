@@ -12,7 +12,7 @@ async function getProfile(): Promise<PublicProfile> {
     return await call(routes.public.profile, {});
   } catch {
     return {
-      name: 'Happy Children Academy',
+      name: 'Hemant Children Academy',
       foundedOn: '2003-04-15',
       registrationNo: '103 JJN 2003-04',
       board: 'Rajasthan Board of Secondary Education (RBSE)',
@@ -36,7 +36,7 @@ export default async function ContactPage() {
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-10)' }}>
             <span className="badge badge-info" style={{ marginBottom: 'var(--space-2)' }}>Direct Communication</span>
             <h1 className="heading-hero" style={{ marginBottom: 'var(--space-2)' }}>
-              Contact Happy Children Academy
+              Contact Hemant Children Academy
             </h1>
             <p className="subheading" style={{ maxWidth: '640px', margin: '0 auto' }}>
               We welcome prospective parents, alumni, and community members to visit our campus or contact our administration desk.

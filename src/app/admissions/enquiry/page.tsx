@@ -147,7 +147,7 @@ export default function EnquiryPage() {
               </h1>
 
               <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--font-size-base)', marginBottom: 'var(--space-6)' }}>
-                Your admission enquiry for <strong>{childName}</strong> has been received by the Happy Children Academy office.
+                Your admission enquiry for <strong>{childName}</strong> has been received by the Hemant Children Academy office.
               </p>
 
               <div

@@ -76,7 +76,7 @@ export default async function NoticeDetailPage({ params }: { params: Promise<{ s
               }}
             >
               <div>
-                <strong>Authority:</strong> Office of the Headmaster · Happy Children Academy, Pilani
+                <strong>Authority:</strong> Office of the Headmaster · Hemant Children Academy, Pilani
               </div>
               <Link
                 href="/notices"

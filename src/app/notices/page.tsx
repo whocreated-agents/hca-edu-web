@@ -64,7 +64,7 @@ export default function NoticesPage() {
               School Notice Board
             </h1>
             <p className="subheading" style={{ maxWidth: '640px', margin: '0 auto' }}>
-              Academic dates, holiday schedules, examination notices, and regulatory updates from the Happy Children Academy office.
+              Academic dates, holiday schedules, examination notices, and regulatory updates from the Hemant Children Academy office.
             </p>
           </div>
 

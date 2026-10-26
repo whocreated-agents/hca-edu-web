@@ -252,7 +252,7 @@ export default function ChildFeeLedgerPage({ params }: { params: Promise<{ id: s
                     <div className="flex-between" style={{ borderBottom: '2px solid var(--border-subtle)', paddingBottom: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>
                       <div>
                         <h2 style={{ fontSize: 'var(--font-size-base)', fontWeight: 'bold', color: 'var(--hca-brand-primary-800)' }}>
-                          HAPPY CHILDREN ACADEMY
+                          HEMANT CHILDREN ACADEMY
                         </h2>
                         <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-muted)' }}>
                           Pilani, Rajasthan · Reg. 103 JJN 2003-04

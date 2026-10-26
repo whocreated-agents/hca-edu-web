@@ -13,7 +13,7 @@ async function getProfile(): Promise<PublicProfile> {
     return await call(routes.public.profile, {});
   } catch {
     return {
-      name: 'Happy Children Academy',
+      name: 'Hemant Children Academy',
       foundedOn: '2003-04-15',
       registrationNo: '103 JJN 2003-04',
       board: 'Rajasthan Board of Secondary Education (RBSE)',
@@ -53,7 +53,7 @@ export default async function AboutPage() {
             <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
               <h2 className="heading-section">Our Founding Story &amp; Purpose</h2>
               <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--text-secondary)', lineHeight: 'var(--line-height-relaxed)' }}>
-                Happy Children Academy was established on 15 April 2003 with a singular mission: to provide high-quality, disciplined, and accessible schooling to children across Pilani, Surajgarh, and the rural Shekhawati region.
+                Hemant Children Academy was established on 15 April 2003 with a singular mission: to provide high-quality, disciplined, and accessible schooling to children across Pilani, Surajgarh, and the rural Shekhawati region.
               </p>
               <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--text-secondary)', lineHeight: 'var(--line-height-relaxed)' }}>
                 While Pilani is internationally renowned for higher university education, foundational school education requires compassionate local institutions where moral values, vernacular fluency in Hindi, and professional proficiency in English are fostered together.

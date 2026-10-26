@@ -90,7 +90,7 @@ export default function AdminParentsActivationPage() {
                   <Image src="/brand/logo-mark.svg" alt="HCA" width={48} height={48} />
                   <div>
                     <h2 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'bold', color: 'var(--hca-brand-primary-900)' }}>
-                      HAPPY CHILDREN ACADEMY, PILANI
+                      HEMANT CHILDREN ACADEMY, PILANI
                     </h2>
                     <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-muted)' }}>
                       Affiliated to RBSE · Reg. No. 103 JJN 2003-04 · Office Copy / Parent Handover

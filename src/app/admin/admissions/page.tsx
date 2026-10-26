@@ -158,7 +158,7 @@ export default function AdminAdmissionsPipelinePage() {
             >
               <div
                 className="card-elevated"
-                style={{ maxWidth: '520px', width: '100%', backgroundColor: '#fff', padding: 'var(--space-6)' }}
+                style={{ maxWidth: '520px', width: '100%', backgroundColor: 'var(--surface-base)', padding: 'var(--space-6)' }}
                 onClick={(e) => e.stopPropagation()}
               >
                 <span className="badge badge-success" style={{ marginBottom: 'var(--space-2)' }}>Link Generated</span>

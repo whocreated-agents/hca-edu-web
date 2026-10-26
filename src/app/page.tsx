@@ -86,7 +86,7 @@ export default async function HomePage() {
 
                 <p
                   className="subheading"
-                  style={{ color: '#E2E8F0', marginBottom: 'var(--space-6)', maxWidth: '540px' }}
+                  style={{ color: 'var(--hca-neutral-200)', marginBottom: 'var(--space-6)', maxWidth: '540px' }}
                 >
                   Hemant Children Academy delivers rigorous RBSE curriculum balanced with scientific inquiry, character formation, and inclusive care from Nursery to Class X.
                 </p>
@@ -98,7 +98,7 @@ export default async function HomePage() {
                   <a
                     href="tel:+919460540956"
                     className="btn btn-secondary btn-lg"
-                    style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)' }}
+                    style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'var(--text-inverse)', borderColor: 'rgba(255, 255, 255, 0.3)' }}
                   >
                     Quick Call: +91 94605 40956
                   </a>

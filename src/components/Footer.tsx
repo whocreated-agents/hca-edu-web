@@ -34,10 +34,10 @@ export function Footer({
                 Hemant Children Academy
               </span>
             </div>
-            <p style={{ fontSize: 'var(--font-size-sm)', color: '#CBD5E1', lineHeight: 'var(--line-height-relaxed)' }}>
+            <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--hca-neutral-300)', lineHeight: 'var(--line-height-relaxed)' }}>
               {serviceYears} years of holistic educational service in Pilani, Rajasthan. Co-educational English &amp; Hindi medium instruction.
             </p>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: '#94A3B8', marginTop: 'var(--space-2)' }}>
+            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--hca-neutral-400)', marginTop: 'var(--space-2)' }}>
               <p><strong>Statutory Reg:</strong> {registrationNo}</p>
               <p><strong>Curriculum:</strong> {board}</p>
               <p><strong>Founded:</strong> 15 April 2003</p>
@@ -73,7 +73,7 @@ export function Footer({
             <h4 style={{ fontSize: 'var(--font-size-base)', fontWeight: '600', color: 'var(--text-inverse)', marginBottom: 'var(--space-2)' }}>
               School Office
             </h4>
-            <div style={{ fontSize: 'var(--font-size-sm)', color: '#CBD5E1', lineHeight: 'var(--line-height-normal)' }}>
+            <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--hca-neutral-300)', lineHeight: 'var(--line-height-normal)' }}>
               {addressLines.map((line, idx) => (
                 <p key={idx}>{line}</p>
               ))}
@@ -87,7 +87,7 @@ export function Footer({
             <p style={{ fontSize: 'var(--font-size-sm)' }}>
               <strong>Email:</strong> <a href={`mailto:${email}`}>{email}</a>
             </p>
-            <p style={{ fontSize: 'var(--font-size-xs)', color: '#94A3B8', marginTop: 'var(--space-1)' }}>
+            <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--hca-neutral-400)', marginTop: 'var(--space-1)' }}>
               Office Hours: Mon–Sat 8:00 AM – 2:00 PM
             </p>
           </div>
@@ -96,13 +96,13 @@ export function Footer({
         {/* DPDP Compliance & Bottom Bar */}
         <div
           style={{
-            borderTop: '1px solid #1E293B',
+            borderTop: '1px solid var(--hca-neutral-800)',
             paddingTop: 'var(--space-6)',
             display: 'flex',
             flexDirection: 'column',
             gap: 'var(--space-2)',
             fontSize: 'var(--font-size-xs)',
-            color: '#64748B',
+            color: 'var(--hca-neutral-500)',
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-2)' }}>

@@ -8,7 +8,7 @@ export default tseslint.config(
   {
     languageOptions: {
       parserOptions: {
-        projectService: { allowDefaultProject: ['next.config.ts'] },
+        projectService: { allowDefaultProject: ['vitest.config.mts'] },
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -18,7 +18,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/test/**/*.ts', '**/*.spec.ts', '**/*.test.ts'],
+    files: ['**/test/**/*.ts', '**/*.spec.ts', '**/*.test.ts', '**/test/**/*.tsx'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -27,6 +27,7 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'off',
     },
   },
   {

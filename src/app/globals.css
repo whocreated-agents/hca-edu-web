@@ -204,7 +204,7 @@ img, svg {
 }
 
 .btn-danger:hover {
-  background-color: #B91C1C;
+  background-color: var(--attendance-absent-text);
 }
 
 .btn:disabled {
@@ -246,7 +246,7 @@ img, svg {
 
 .form-input[aria-invalid="true"], .form-select[aria-invalid="true"] {
   border-color: var(--status-error-base);
-  background-color: #FFF5F5;
+  background-color: var(--status-error-bg);
 }
 
 .form-error {
@@ -338,7 +338,7 @@ img, svg {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+  background: linear-gradient(90deg, var(--hca-neutral-100) 25%, var(--hca-neutral-200) 50%, var(--hca-neutral-100) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: var(--radius-md);
@@ -558,11 +558,11 @@ img, svg {
 }
 
 .public-footer a {
-  color: #93C5FD;
+  color: var(--hca-brand-primary-300);
 }
 
 .public-footer a:hover {
-  color: #BFDBFE;
+  color: var(--hca-brand-primary-200);
 }
 
 /* Thermal / Activation Slip Printable Styles */
@@ -580,8 +580,8 @@ img, svg {
     width: 100%;
     margin: 0;
     padding: 20px;
-    background: #fff;
-    color: #000;
+    background: var(--surface-base);
+    color: var(--surface-dark);
   }
   .no-print {
     display: none !important;

@@ -246,7 +246,7 @@ export default function ChildFeeLedgerPage({ params }: { params: Promise<{ id: s
                 >
                   <div
                     className="card-elevated printable-slip"
-                    style={{ maxWidth: '480px', width: '100%', backgroundColor: '#fff', color: '#0F172A', padding: 'var(--space-6)' }}
+                    style={{ maxWidth: '480px', width: '100%', backgroundColor: 'var(--surface-base)', color: 'var(--text-primary)', padding: 'var(--space-6)' }}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex-between" style={{ borderBottom: '2px solid var(--border-subtle)', paddingBottom: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>

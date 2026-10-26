@@ -10,7 +10,7 @@ import {
   type AttendanceStatus,
   type AttendanceSubmission,
 } from '@hca/contracts';
-import { call } from '../../../lib/api';
+import { call, ApiError } from '../../../lib/api';
 import { useAuth } from '../../../lib/auth-context';
 import {
   queueSubmission,
@@ -214,7 +214,18 @@ export default function TeacherAttendancePage() {
 
       setStatusMessage({ type: 'success', text: outcomeText });
       void loadSheet(selectedSectionId, selectedDate);
-    } catch {
+    } catch (err: unknown) {
+      if (err instanceof ApiError && err.status >= 400 && err.status < 500) {
+        // Business / Auth / Conflict / Validation errors (401, 403, 409, 422, etc.)
+        // Must NOT be queued offline; surface immediate error alerts to the user.
+        const detail = err.problem?.detail ?? err.problem?.title ?? `Server rejected submission (HTTP ${err.status})`;
+        setStatusMessage({
+          type: 'error',
+          text: `Submission rejected by server (${err.status}): ${detail}`,
+        });
+        return;
+      }
+
       // Offline / Network Failure Fallback
       queueSubmission(selectedSectionId, selectedDate, submission);
       setIsOfflineQueued(true);

@@ -1,7 +1,7 @@
 'use client';
 
 import { routes, type AttendanceSubmission } from '@hca/contracts';
-import { call } from './api';
+import { call, ApiError } from './api';
 
 export interface QueuedRegister {
   id: string; // sectionId:date
@@ -76,6 +76,10 @@ export function removeQueuedSubmission(sectionId: string, date: string): void {
   saveStoredOutbox(filtered);
 }
 
+export function clearOutbox(): void {
+  saveStoredOutbox([]);
+}
+
 let isSyncing = false;
 
 export async function flushOutbox(): Promise<{ synced: number; failed: number }> {
@@ -98,14 +102,18 @@ export async function flushOutbox(): Promise<{ synced: number; failed: number }>
         synced++;
       } catch (err: unknown) {
         failed++;
-        // If error is 409 ATTENDANCE_STALE or 422 roster mismatch, we keep error info
-        item.retryCount++;
-        item.lastError = err instanceof Error ? err.message : 'Sync failed';
-        const current = getStoredOutbox();
-        const idx = current.findIndex((i) => i.id === item.id);
-        if (idx >= 0) {
-          current[idx] = item;
-          saveStoredOutbox(current);
+        if (err instanceof ApiError && err.status >= 400 && err.status < 500) {
+          // Terminal client/business error (401, 403, 409, 422) - discard from outbox so it does not retry indefinitely
+          removeQueuedSubmission(item.sectionId, item.date);
+        } else {
+          item.retryCount++;
+          item.lastError = err instanceof Error ? err.message : 'Sync failed';
+          const current = getStoredOutbox();
+          const idx = current.findIndex((i) => i.id === item.id);
+          if (idx >= 0) {
+            current[idx] = item;
+            saveStoredOutbox(current);
+          }
         }
       }
     }

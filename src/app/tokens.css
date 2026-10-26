@@ -8,6 +8,9 @@
   /* Brand Primary */
   --hca-brand-primary-50: #EFF6FF;
   --hca-brand-primary-100: #DBEAFE;
+  --hca-brand-primary-200: #BFDBFE;
+  --hca-brand-primary-300: #93C5FD;
+  --hca-brand-primary-400: #60A5FA;
   --hca-brand-primary-500: #3B82F6;
   --hca-brand-primary-600: #2563EB;
   --hca-brand-primary-700: #1D4ED8;
@@ -20,6 +23,21 @@
   --hca-brand-accent-500: #F59E0B;
   --hca-brand-accent-600: #D97706;
   --hca-brand-accent-700: #B45309;
+
+  /* Neutral Scale */
+  --hca-neutral-0: #FFFFFF;
+  --hca-color-white: #FFFFFF;
+  --hca-neutral-white: #FFFFFF;
+  --hca-neutral-50: #F8FAFC;
+  --hca-neutral-100: #F1F5F9;
+  --hca-neutral-200: #E2E8F0;
+  --hca-neutral-300: #CBD5E1;
+  --hca-neutral-400: #94A3B8;
+  --hca-neutral-500: #64748B;
+  --hca-neutral-600: #475569;
+  --hca-neutral-700: #334155;
+  --hca-neutral-800: #1E293B;
+  --hca-neutral-900: #0F172A;
 
   /* Semantic Surfaces */
   --surface-base: #FFFFFF;

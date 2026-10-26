@@ -32,10 +32,10 @@ export function AdminHeader() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-          <span style={{ fontSize: 'var(--font-size-xs)', color: '#94A3B8' }}>
+          <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--hca-neutral-400)' }}>
             {user?.displayName}
           </span>
-          <Link href="/" className="btn btn-ghost" style={{ color: '#93C5FD', fontSize: 'var(--font-size-xs)' }}>
+          <Link href="/" className="btn btn-ghost" style={{ color: 'var(--hca-brand-primary-300)', fontSize: 'var(--font-size-xs)' }}>
             Public Site
           </Link>
           <button type="button" onClick={logout} className="btn btn-secondary" style={{ minHeight: '32px', padding: '0 var(--space-3)', fontSize: 'var(--font-size-xs)' }}>
@@ -45,33 +45,33 @@ export function AdminHeader() {
       </div>
 
       {/* Sub-navigation bar */}
-      <div style={{ backgroundColor: '#1E293B', borderTop: '1px solid #334155', overflowX: 'auto' }}>
+      <div style={{ backgroundColor: 'var(--hca-neutral-800)', borderTop: '1px solid var(--hca-neutral-700)', overflowX: 'auto' }}>
         <div className="container" style={{ display: 'flex', gap: 'var(--space-4)', padding: 'var(--space-2) var(--space-4)' }}>
-          <Link href="/admin" style={{ color: '#F8FAFC', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin" style={{ color: 'var(--hca-neutral-50)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Overview
           </Link>
-          <Link href="/admin/admissions" style={{ color: '#CBD5E1', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/admissions" style={{ color: 'var(--hca-neutral-300)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Admissions Pipeline
           </Link>
-          <Link href="/admin/students" style={{ color: '#CBD5E1', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/students" style={{ color: 'var(--hca-neutral-300)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Student Records
           </Link>
-          <Link href="/admin/parents" style={{ color: '#CBD5E1', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/parents" style={{ color: 'var(--hca-neutral-300)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Activation Slips
           </Link>
-          <Link href="/admin/attendance" style={{ color: '#CBD5E1', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/attendance" style={{ color: 'var(--hca-neutral-300)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Attendance Reports
           </Link>
-          <Link href="/admin/fees" style={{ color: '#CBD5E1', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/fees" style={{ color: 'var(--hca-neutral-300)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Fee Operations
           </Link>
-          <Link href="/admin/content" style={{ color: '#CBD5E1', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/content" style={{ color: 'var(--hca-neutral-300)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Notices &amp; CMS
           </Link>
-          <Link href="/admin/sessions" style={{ color: '#CBD5E1', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/sessions" style={{ color: 'var(--hca-neutral-300)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Academic Sessions
           </Link>
-          <Link href="/admin/audit" style={{ color: '#94A3B8', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
+          <Link href="/admin/audit" style={{ color: 'var(--hca-neutral-400)', fontSize: 'var(--font-size-xs)', fontWeight: '500', whiteSpace: 'nowrap' }}>
             Audit Log
           </Link>
         </div>

@@ -84,7 +84,7 @@ export default function AdminParentsActivationPage() {
 
           {/* Printable Slip Preview */}
           {issuedSlip && (
-            <div className="card-elevated printable-slip" style={{ border: '2px solid var(--hca-brand-primary-800)', padding: 'var(--space-8)', backgroundColor: '#FFFFFF' }}>
+            <div className="card-elevated printable-slip" style={{ border: '2px solid var(--hca-brand-primary-800)', padding: 'var(--space-8)', backgroundColor: 'var(--surface-base)' }}>
               <div className="flex-between" style={{ borderBottom: '2px solid var(--border-subtle)', paddingBottom: 'var(--space-4)', marginBottom: 'var(--space-4)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                   <Image src="/brand/logo-mark.svg" alt="HCA" width={48} height={48} />

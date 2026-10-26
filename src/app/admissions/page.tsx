@@ -16,9 +16,14 @@ async function getSessionData(): Promise<PublicSessionData> {
   try {
     return await call(routes.public.session, {});
   } catch {
+    const curYear = new Date().getFullYear();
+    const nextYear = curYear + 1;
+    const yearAfter = curYear + 2;
+    const curLabel = `${curYear}-${String(nextYear).slice(-2)}`;
+    const nextLabel = `${nextYear}-${String(yearAfter).slice(-2)}`;
     return {
-      running: { id: 'default', label: '2026-27', isAdmissionOpen: false, startsOn: '2026-04-01', endsOn: '2027-03-31', state: 'RUNNING' },
-      admissionOpen: { id: 'next', label: '2027-28', isAdmissionOpen: true, startsOn: '2027-04-01', endsOn: '2028-03-31', state: 'UPCOMING' },
+      running: { id: 'default', label: curLabel, isAdmissionOpen: false, startsOn: `${curYear}-04-01`, endsOn: `${nextYear}-03-31`, state: 'RUNNING' },
+      admissionOpen: { id: 'next', label: nextLabel, isAdmissionOpen: true, startsOn: `${nextYear}-04-01`, endsOn: `${yearAfter}-03-31`, state: 'UPCOMING' },
     };
   }
 }
@@ -34,45 +39,48 @@ export default async function AdmissionsPage() {
       <main id="main-content" role="main" style={{ padding: 'var(--space-10) 0' }}>
         <div className="container">
           {/* Hero Section */}
-          <div style={{ textAlign: 'center', marginBottom: 'var(--space-10)' }}>
-            <span className="badge badge-info" style={{ marginBottom: 'var(--space-2)' }}>Academic Intake {activeIntake}</span>
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto var(--space-10)' }}>
+            <span className="badge badge-accent" style={{ marginBottom: 'var(--space-2)' }}>
+              Session {activeIntake}
+            </span>
             <h1 className="heading-hero" style={{ marginBottom: 'var(--space-3)' }}>
               Admissions at Hemant Children Academy
             </h1>
-            <p className="subheading" style={{ maxWidth: '640px', margin: '0 auto' }}>
-              Nursery through Class X · Recognized by Department of Education, Rajasthan · Affiliated with RBSE (Reg. 103 JJN 2003-04)
+            <p className="subheading">
+              Transparent, child-centered admission from Nursery to Class X. Guided by RBSE standards and verified child protection standards under the DPDP Act 2023.
             </p>
           </div>
 
           {/* Admission Status Banner */}
           <div
-            className="card"
+            className={`card ${isOpen ? 'status-banner-open' : 'status-banner-closed'}`}
             style={{
-              backgroundColor: isOpen ? 'var(--hca-brand-primary-50)' : 'var(--surface-muted)',
-              border: `1px solid ${isOpen ? 'var(--hca-brand-primary-200)' : 'var(--border-subtle)'}`,
-              marginBottom: 'var(--space-8)',
+              padding: 'var(--space-6)',
+              marginBottom: 'var(--space-10)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
               gap: 'var(--space-4)',
+              borderLeft: `4px solid ${isOpen ? 'var(--status-success-base)' : 'var(--status-warning-base)'}`,
             }}
           >
             <div>
-              <span className={`badge ${isOpen ? 'badge-success' : 'badge-neutral'}`} style={{ marginBottom: 'var(--space-1)' }}>
-                {isOpen ? 'Admissions Open' : 'Admissions Currently Closed'}
-              </span>
-              <h2 style={{ fontSize: 'var(--font-size-lg)', fontWeight: '700', color: 'var(--text-primary)' }}>
-                {isOpen ? `Enquiries Open for Academic Session ${activeIntake}` : `Enquiries for Session ${activeIntake} Closed`}
-              </h2>
-              <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-secondary)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                <span className={`status-indicator ${isOpen ? 'status-indicator-success' : 'status-indicator-warning'}`} />
+                <h2 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'bold' }}>
+                  {isOpen ? `Admissions Now Open for Session ${activeIntake}` : `Admissions For Session ${activeIntake} Commencing Soon`}
+                </h2>
+              </div>
+              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)', marginTop: 'var(--space-1)' }}>
                 {isOpen
-                  ? 'Submit the 2-minute online enquiry form below to schedule an interaction or campus walkthrough.'
-                  : 'The online intake window is closed. Please contact the school office directly for mid-term transfer enquiries.'}
+                  ? 'Accepting inquiries for Pre-Primary (Nursery, LKG, UKG) and Primary/Upper-Primary/Secondary grades.'
+                  : 'Pre-registration inquiries are currently being recorded by the school admissions office.'}
               </p>
             </div>
+
             {isOpen && (
-              <Link href="/admissions/enquiry" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>
+              <Link href="/admissions/enquiry" className="btn btn-primary btn-lg">
                 Start 2-Minute Enquiry →
               </Link>
             )}
@@ -96,7 +104,7 @@ export default async function AdmissionsPage() {
                       height: '32px',
                       borderRadius: 'var(--radius-full)',
                       backgroundColor: 'var(--hca-brand-primary-800)',
-                      color: '#ffffff',
+                      color: 'var(--text-inverse)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -121,7 +129,7 @@ export default async function AdmissionsPage() {
                       height: '32px',
                       borderRadius: 'var(--radius-full)',
                       backgroundColor: 'var(--hca-brand-primary-800)',
-                      color: '#ffffff',
+                      color: 'var(--text-inverse)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -146,7 +154,7 @@ export default async function AdmissionsPage() {
                       height: '32px',
                       borderRadius: 'var(--radius-full)',
                       backgroundColor: 'var(--hca-brand-primary-800)',
-                      color: '#ffffff',
+                      color: 'var(--text-inverse)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',

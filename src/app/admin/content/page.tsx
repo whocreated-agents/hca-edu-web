@@ -7,10 +7,10 @@ import {
   type NoticeTag,
   type PublicProfile,
 } from '@hca/contracts';
-import { call } from '../../../lib/api';
+import { call, ApiError } from '../../../lib/api';
 import { AdminHeader } from '../../../components/AdminHeader';
 import { Footer } from '../../../components/Footer';
-import { Skeleton } from '../../../components/FiveStateView';
+import { Skeleton, ErrorBanner } from '../../../components/FiveStateView';
 
 export default function AdminContentPage() {
   const [activeTab, setActiveTab] = useState<'notices' | 'profile'>('notices');
@@ -18,6 +18,7 @@ export default function AdminContentPage() {
   // Notices
   const [notices, setNotices] = useState<PublicNotice[]>([]);
   const [loadingNotices, setLoadingNotices] = useState(true);
+  const [errorNotices, setErrorNotices] = useState<string | null>(null);
 
   // New Notice Form
   const [showCreateNotice, setShowCreateNotice] = useState(false);
@@ -26,11 +27,14 @@ export default function AdminContentPage() {
   const [newTag, setNewTag] = useState<NoticeTag>('ADMISSION');
   const [newPinned, setNewPinned] = useState(false);
   const [creatingNotice, setCreatingNotice] = useState(false);
+  const [noticeFormError, setNoticeFormError] = useState<string | null>(null);
 
   // Profile Facts
   const [profile, setProfile] = useState<PublicProfile | null>(null);
+  const [loadingProfile, setLoadingProfile] = useState(false);
   const [savingProfile, setSavingProfile] = useState(false);
   const [profileSuccess, setProfileSuccess] = useState(false);
+  const [errorProfile, setErrorProfile] = useState<string | null>(null);
 
   // Form states for profile
   const [name, setName] = useState('');
@@ -40,28 +44,38 @@ export default function AdminContentPage() {
 
   const loadNotices = useCallback(async () => {
     setLoadingNotices(true);
+    setErrorNotices(null);
     try {
       const res = await call(routes.public.notices, { query: { limit: 50 } });
       setNotices(res.items);
-    } catch {
-      /* ignore */
+    } catch (err: unknown) {
+      const message = err instanceof ApiError
+        ? (err.problem?.detail ?? err.problem?.title ?? `HTTP ${err.status}`)
+        : (err instanceof Error ? err.message : 'Unable to load school notices.');
+      setErrorNotices(message);
     } finally {
       setLoadingNotices(false);
     }
   }, []);
 
   const loadProfile = useCallback(async () => {
-    
+    setLoadingProfile(true);
+    setErrorProfile(null);
     try {
       const data = await call(routes.adminContent.profile, {});
       setProfile(data);
       setName(data.name);
-      setPhone(data.phones[0] ?? '+91 94605 40956');
+      setPhone(data.phones[0] ?? '');
       setEmail(data.email);
       setHours(data.hours);
-    } catch {
-      /* ignore */
-    } 
+    } catch (err: unknown) {
+      const message = err instanceof ApiError
+        ? (err.problem?.detail ?? err.problem?.title ?? `HTTP ${err.status}`)
+        : (err instanceof Error ? err.message : 'Unable to load school profile facts.');
+      setErrorProfile(message);
+    } finally {
+      setLoadingProfile(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -79,6 +93,7 @@ export default function AdminContentPage() {
     if (!newTitle.trim() || !newBody.trim()) return;
 
     setCreatingNotice(true);
+    setNoticeFormError(null);
     try {
       await call(routes.adminContent.createNotice, {
         body: {
@@ -88,15 +103,19 @@ export default function AdminContentPage() {
           isPinned: newPinned,
           publishFrom: new Date().toISOString(),
           publishUntil: null,
-          audience: 'PUBLIC', isPublished: true,
+          audience: 'PUBLIC',
+          isPublished: true,
         },
       });
       setShowCreateNotice(false);
       setNewTitle('');
       setNewBody('');
       await loadNotices();
-    } catch {
-      alert('Failed to publish notice.');
+    } catch (err: unknown) {
+      const message = err instanceof ApiError
+        ? (err.problem?.detail ?? err.problem?.title ?? `HTTP ${err.status}`)
+        : (err instanceof Error ? err.message : 'Failed to publish notice.');
+      setNoticeFormError(message);
     } finally {
       setCreatingNotice(false);
     }
@@ -108,11 +127,12 @@ export default function AdminContentPage() {
 
     setSavingProfile(true);
     setProfileSuccess(false);
+    setErrorProfile(null);
     try {
       await call(routes.adminContent.putProfile, {
         body: {
           name,
-          phones: [phone],
+          phones: phone ? [phone] : [],
           email,
           hours,
           addressLines: profile.addressLines,
@@ -124,8 +144,11 @@ export default function AdminContentPage() {
       });
       setProfileSuccess(true);
       await loadProfile();
-    } catch {
-      alert('Failed to update school profile facts.');
+    } catch (err: unknown) {
+      const message = err instanceof ApiError
+        ? (err.problem?.detail ?? err.problem?.title ?? `HTTP ${err.status}`)
+        : (err instanceof Error ? err.message : 'Failed to update school profile facts.');
+      setErrorProfile(message);
     } finally {
       setSavingProfile(false);
     }
@@ -181,10 +204,16 @@ export default function AdminContentPage() {
 
               {/* Create Notice Form Modal / Drawer */}
               {showCreateNotice && (
-                <div className="card-elevated" style={{ marginBottom: 'var(--space-6)', backgroundColor: '#fff', border: '2px solid var(--hca-brand-primary-800)' }}>
+                <div className="card-elevated" style={{ marginBottom: 'var(--space-6)', backgroundColor: 'var(--surface-base)', border: '2px solid var(--hca-brand-primary-800)' }}>
                   <h3 style={{ fontSize: 'var(--font-size-base)', fontWeight: '700', marginBottom: 'var(--space-3)' }}>
                     Draft &amp; Publish New School Notice
                   </h3>
+
+                  {noticeFormError && (
+                    <div className="state-offline-banner" style={{ backgroundColor: 'var(--status-error-bg)', borderColor: 'var(--status-error-border)', color: 'var(--status-error-text)', marginBottom: 'var(--space-4)' }}>
+                      ⚠ {noticeFormError}
+                    </div>
+                  )}
 
                   <form onSubmit={handleCreateNotice}>
                     <div className="form-group">
@@ -246,6 +275,17 @@ export default function AdminContentPage() {
                 </div>
               )}
 
+              {/* Error State Banner */}
+              {errorNotices && (
+                <div style={{ marginBottom: 'var(--space-4)' }}>
+                  <ErrorBanner
+                    title="Notice Fetch Error"
+                    message={errorNotices}
+                    onRetry={() => void loadNotices()}
+                  />
+                </div>
+              )}
+
               {/* Notices List */}
               {loadingNotices ? (
                 <div className="card">
@@ -298,39 +338,53 @@ export default function AdminContentPage() {
                 </div>
               )}
 
-              <form onSubmit={handleSaveProfile}>
-                <div className="form-group">
-                  <label htmlFor="pName" className="form-label">School Name *</label>
-                  <input type="text" id="pName" required value={name} onChange={(e) => setName(e.target.value)} className="form-input" />
+              {errorProfile && (
+                <div style={{ marginBottom: 'var(--space-4)' }}>
+                  <ErrorBanner
+                    title="School Profile Fact Error"
+                    message={errorProfile}
+                    onRetry={() => void loadProfile()}
+                  />
                 </div>
+              )}
 
-                <div className="grid-cols-2">
+              {loadingProfile ? (
+                <Skeleton height="150px" />
+              ) : (
+                <form onSubmit={handleSaveProfile}>
                   <div className="form-group">
-                    <label htmlFor="pPhone" className="form-label">Primary Public Phone *</label>
-                    <input type="text" id="pPhone" required value={phone} onChange={(e) => setPhone(e.target.value)} className="form-input" />
+                    <label htmlFor="pName" className="form-label">School Name *</label>
+                    <input type="text" id="pName" required value={name} onChange={(e) => setName(e.target.value)} className="form-input" />
+                  </div>
+
+                  <div className="grid-cols-2">
+                    <div className="form-group">
+                      <label htmlFor="pPhone" className="form-label">Primary Public Phone *</label>
+                      <input type="text" id="pPhone" required value={phone} onChange={(e) => setPhone(e.target.value)} className="form-input" />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="pEmail" className="form-label">Official Email *</label>
+                      <input type="email" id="pEmail" required value={email} onChange={(e) => setEmail(e.target.value)} className="form-input" />
+                    </div>
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="pEmail" className="form-label">Official Email *</label>
-                    <input type="email" id="pEmail" required value={email} onChange={(e) => setEmail(e.target.value)} className="form-input" />
+                    <label htmlFor="pHours" className="form-label">Office Working Hours *</label>
+                    <input type="text" id="pHours" required value={hours} onChange={(e) => setHours(e.target.value)} className="form-input" />
                   </div>
-                </div>
 
-                <div className="form-group">
-                  <label htmlFor="pHours" className="form-label">Office Working Hours *</label>
-                  <input type="text" id="pHours" required value={hours} onChange={(e) => setHours(e.target.value)} className="form-input" />
-                </div>
+                  <div className="card" style={{ backgroundColor: 'var(--surface-subtle)', marginBottom: 'var(--space-4)', fontSize: 'var(--font-size-xs)' }}>
+                    <p><strong>Statutory Reg:</strong> {profile?.registrationNo}</p>
+                    <p><strong>Board Affiliation:</strong> {profile?.board}</p>
+                    <p><strong>Founding Date:</strong> {profile?.foundedOn} (15 April 2003)</p>
+                  </div>
 
-                <div className="card" style={{ backgroundColor: 'var(--surface-subtle)', marginBottom: 'var(--space-4)', fontSize: 'var(--font-size-xs)' }}>
-                  <p><strong>Statutory Reg:</strong> {profile?.registrationNo}</p>
-                  <p><strong>Board Affiliation:</strong> {profile?.board}</p>
-                  <p><strong>Founding Date:</strong> {profile?.foundedOn} (15 April 2003)</p>
-                </div>
-
-                <button type="submit" disabled={savingProfile} className="btn btn-primary btn-lg">
-                  {savingProfile ? 'Saving Changes...' : 'Save Profile Changes'}
-                </button>
-              </form>
+                  <button type="submit" disabled={savingProfile} className="btn btn-primary btn-lg">
+                    {savingProfile ? 'Saving Changes...' : 'Save Profile Changes'}
+                  </button>
+                </form>
+              )}
             </div>
           )}
         </div>

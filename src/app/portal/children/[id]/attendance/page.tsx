@@ -45,16 +45,18 @@ export default function ChildAttendanceViewPage({ params }: { params: Promise<{ 
 
   const handlePrevMonth = () => {
     const parts = selectedMonth.split('-');
-    const y = Number(parts[0] ?? 2026);
-    const m = Number(parts[1] ?? 10);
+    const currentDate = new Date();
+    const y = Number(parts[0]) || currentDate.getFullYear();
+    const m = Number(parts[1]) || (currentDate.getMonth() + 1);
     const prev = new Date(y, m - 2, 1);
     setSelectedMonth(`${prev.getFullYear()}-${String(prev.getMonth() + 1).padStart(2, '0')}`);
   };
 
   const handleNextMonth = () => {
     const parts = selectedMonth.split('-');
-    const y = Number(parts[0] ?? 2026);
-    const m = Number(parts[1] ?? 10);
+    const currentDate = new Date();
+    const y = Number(parts[0]) || currentDate.getFullYear();
+    const m = Number(parts[1]) || (currentDate.getMonth() + 1);
     const next = new Date(y, m, 1);
     setSelectedMonth(`${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, '0')}`);
   };
@@ -66,52 +68,70 @@ export default function ChildAttendanceViewPage({ params }: { params: Promise<{ 
   return (
     <>
       <PortalHeader />
-      <main id="main-content" role="main" style={{ padding: 'var(--space-8) 0', minHeight: '80vh', backgroundColor: 'var(--surface-subtle)' }}>
-        <div className="container">
+      <main id="main-content" role="main" style={{ padding: 'var(--space-8) 0', backgroundColor: 'var(--surface-subtle)', minHeight: '80vh' }}>
+        <div className="container" style={{ maxWidth: '960px' }}>
+          {/* Breadcrumb / Back Navigation */}
           <div style={{ marginBottom: 'var(--space-4)' }}>
-            <Link href="/portal" style={{ fontSize: 'var(--font-size-xs)', fontWeight: '600', color: 'var(--hca-brand-primary-700)' }}>
-              ← Back to Portal Home
+            <Link href="/portal" className="btn btn-ghost" style={{ paddingLeft: 0, fontSize: 'var(--font-size-sm)' }}>
+              ← Back to Parent Home
             </Link>
           </div>
 
-          {/* Month Header & Picker */}
-          <div className="card-elevated" style={{ marginBottom: 'var(--space-6)' }}>
+          {/* Month Selector Bar */}
+          <div className="card" style={{ marginBottom: 'var(--space-6)', padding: 'var(--space-4)' }}>
             <div className="flex-between" style={{ flexWrap: 'wrap', gap: 'var(--space-3)' }}>
               <div>
-                <span className="badge badge-info" style={{ marginBottom: 'var(--space-1)' }}>Classroom Attendance</span>
-                <h1 className="heading-section">Monthly Attendance Record</h1>
+                <h1 className="heading-section" style={{ fontSize: 'var(--font-size-xl)' }}>
+                  Attendance Register
+                </h1>
                 <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-secondary)' }}>
-                  Official classroom register verified by class teacher
+                  Child ID: {childId} · Official RBSE Academic Record
                 </p>
               </div>
 
-              {/* Month Navigation */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-                <button type="button" onClick={handlePrevMonth} className="btn btn-secondary" style={{ minHeight: '36px', padding: '0 var(--space-3)' }} aria-label="Previous Month">
-                  ‹ Prev
+                <button
+                  type="button"
+                  onClick={handlePrevMonth}
+                  className="btn btn-secondary"
+                  aria-label="Previous Month"
+                  style={{ minWidth: '40px', padding: '0 var(--space-2)' }}
+                >
+                  ◀
                 </button>
-                <strong style={{ fontSize: 'var(--font-size-base)', minWidth: '130px', textAlign: 'center' }}>
-                  {new Date(selectedMonth + '-01').toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
-                </strong>
-                <button type="button" onClick={handleNextMonth} className="btn btn-secondary" style={{ minHeight: '36px', padding: '0 var(--space-3)' }} aria-label="Next Month">
-                  Next ›
+                <span style={{ fontWeight: 'bold', fontSize: 'var(--font-size-base)', minWidth: '100px', textAlign: 'center' }}>
+                  {selectedMonth}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleNextMonth}
+                  className="btn btn-secondary"
+                  aria-label="Next Month"
+                  style={{ minWidth: '40px', padding: '0 var(--space-2)' }}
+                >
+                  ▶
                 </button>
               </div>
             </div>
           </div>
 
-          {error && <ErrorBanner message={error} onRetry={() => loadAttendance(selectedMonth)} />}
-
+          {/* Loading Skeleton */}
           {loading ? (
             <div className="card">
-              <Skeleton height="80px" />
+              <Skeleton height="32px" width="30%" />
               <div style={{ marginTop: 'var(--space-4)' }}>
-                <Skeleton height="320px" />
+                <Skeleton height="200px" />
               </div>
             </div>
+          ) : error ? (
+            <ErrorBanner
+              title="Attendance Record Unavailable"
+              message={error}
+              onRetry={() => void loadAttendance(selectedMonth)}
+            />
           ) : data ? (
             <div>
-              {/* Monthly Summary Badges */}
+              {/* Summary Metrics Bar */}
               <div className="grid-cols-4" style={{ marginBottom: 'var(--space-6)' }}>
                 <div className="card" style={{ textAlign: 'center', padding: 'var(--space-4)', borderLeft: '4px solid var(--attendance-present-active)' }}>
                   <span style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 'bold', color: 'var(--attendance-present-text)', display: 'block' }}>
@@ -165,8 +185,8 @@ export default function ChildAttendanceViewPage({ params }: { params: Promise<{ 
                     let border = 'var(--border-subtle)';
 
                     if (day.holiday) {
-                      bg = '#F1F5F9';
-                      color = '#64748B';
+                      bg = 'var(--surface-muted)';
+                      color = 'var(--text-muted)';
                     } else if (status === 'PRESENT') {
                       bg = 'var(--attendance-present-bg)';
                       color = 'var(--attendance-present-text)';

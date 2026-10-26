@@ -150,7 +150,7 @@ export default async function AboutPage() {
             <h3 style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 'bold', marginBottom: 'var(--space-2)', color: 'var(--text-inverse)' }}>
               Looking to Enroll Your Child at HCA?
             </h3>
-            <p style={{ color: '#E2E8F0', maxWidth: '540px', margin: '0 auto var(--space-4)', fontSize: 'var(--font-size-sm)' }}>
+            <p style={{ color: 'var(--hca-neutral-200)', maxWidth: '540px', margin: '0 auto var(--space-4)', fontSize: 'var(--font-size-sm)' }}>
               Our admission desk is ready to answer questions regarding class eligibility, documents, and school transport routes.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-3)' }}>

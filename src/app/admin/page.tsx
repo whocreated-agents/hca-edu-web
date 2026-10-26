@@ -48,7 +48,8 @@ export default function AdminOverviewPage() {
     );
   }
 
-  const admissionLabel = sessionData?.admissionOpen?.label ?? '2027–28';
+  const curYear = new Date().getFullYear();
+  const admissionLabel = sessionData?.admissionOpen?.label ?? sessionData?.running?.label ?? (curYear + '–' + String(curYear + 1).slice(-2));
 
   return (
     <>

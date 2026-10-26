@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60" fill="none">
+  <g transform="translate(4, 6)">
+    <rect width="48" height="48" rx="10" fill="#0F294A"/>
+    <path d="M24 10L38 18V30C38 37 32 41 24 43C16 41 10 37 10 30V18L24 10Z" fill="#1E3A8A" stroke="#D97706" stroke-width="2"/>
+    <path d="M18 24L24 20L30 24V29C30 33 27 36 24 37C21 36 18 33 18 29V24Z" fill="#F59E0B"/>
+    <text x="24" y="30" font-family="Inter, sans-serif" font-size="9" font-weight="bold" fill="#0F294A" text-anchor="middle">HCA</text>
+  </g>
+  <text x="60" y="27" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0F294A" letter-spacing="-0.02em">Hemant Children</text>
+  <text x="60" y="44" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#D97706" letter-spacing="0.08em">ACADEMY</text>
+  <text x="145" y="44" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#64748B">· PILANI</text>
+</svg>

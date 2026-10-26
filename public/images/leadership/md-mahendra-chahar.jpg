@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="lead-md-mahendra-chahar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0F294A"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="20" fill="url(#lead-md-mahendra-chahar)"/>
+  <circle cx="200" cy="150" r="64" fill="#DBEAFE" stroke="#F59E0B" stroke-width="4"/>
+  <path d="M165 145 C165 125, 235 125, 235 145 C235 170, 165 170, 165 145 Z" fill="#1E3A8A"/>
+  <path d="M130 270 C130 215, 270 215, 270 270 Z" fill="#DBEAFE"/>
+  <text x="200" y="310" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">Mr. Mahendra S. Chahar</text>
+  <text x="200" y="336" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#F59E0B" text-anchor="middle">Managing Director</text>
+  <text x="200" y="360" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="#94A3B8" text-anchor="middle">Institutional Direction & Governance</text>
+</svg>
